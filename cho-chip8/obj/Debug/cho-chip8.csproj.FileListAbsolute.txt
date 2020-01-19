@@ -1,0 +1,9 @@
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\bin\Debug\cho_chip8.exe
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\bin\Debug\cho_chip8.pdb
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\obj\Debug\cho-chip8.csprojResolveAssemblyReference.cache
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\obj\Debug\cho-chip8.csproj.CoreCompileInputs.cache
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\obj\Debug\cho_chip8.exe
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\obj\Debug\cho_chip8.pdb
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\bin\Debug\nunit.framework.dll
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\bin\Debug\nunit.framework.pdb
+C:\Users\Daniel Addison\RiderProjects\cho-chip8\cho-chip8\bin\Debug\nunit.framework.xml
