@@ -61,47 +61,40 @@ namespace cho_chip8
                 case 0x0000:
                     switch (FourthChar(opcode))
                     {
-                        case 0x0000: // 00E0 (last char is 0)
+                        case 0x0000: // 00E0
                             // Clears the screen.
                             break;
-                        case 0x000E: // 00EE (last char is E)
+                        case 0x000E: // 00EE
                             // Returns from subroutine.
                             // . Set the PC to the address at the top of the stack.
+                            programCounter = stack.Peek();
                             break;
                         default:
                             Console.WriteLine(GetErrMessage);
                             break;
                     }
                     break;
-
                 case 0x1000:
                     JumpToNnn();
                     break;
-
                 case 0x2000:
                     ExecuteSubroutine();
                     break;
-
                 case 0x3000:
                     SkipIfEqual();
                     break;
-
                 case 0x4000:
                     SkipIfNotEqual();
                     break;
-
                 case 0x5000:
                     SkipIfVxEqualVy();
                     break;
-
                 case 0x6000:
                     VxToNn();
                     break;
-
                 case 0x7000:
                     AddNnToVx();
                     break;
-
                 case 0x8000:
                     switch (FourthChar(opcode))
                     {
@@ -341,7 +334,18 @@ namespace cho_chip8
             var coordY = vRegisters[ShiftRight(1, ThirdChar(opcode))];
             var heightN = FourthChar(opcode);
             programCounter += 2;
+
+            // Swap screen bits base on sprite
+
+            // DrawSpriteCallback?.Invoke(screen bits);
         }
+
+        // private event Action DrawSpriteCallback;
+        //
+        // public void setDrawCallback(Action callback)
+        // {
+        //     DrawSpriteCallback += callback;
+        // }
 
         private void SetVxWithRand() // 0xCXNN : Sets Vx to the result of rand.(0 - 255) AND nn
         {
@@ -506,11 +510,11 @@ namespace cho_chip8
         public readonly Func<ushort, byte> Nn = (opcode) => (byte) (opcode & 0x00FF);
 
         // TODO Confirm LSB / MSB
-        // 0xA2 returns 2.
-        public readonly Func<byte, byte> GetLeastSignificantBit = (vx) => (byte) (vx & 0xF);
+        // Returns 1 / 0
+        public readonly Func<byte, byte> GetLeastSignificantBit = (vx) => (byte) (vx & 0x01);
 
-        // 0xA2 returns A.
-        public readonly Func<byte, byte> GetMostSignificantBit = (vx) => (byte) (vx >> 4);
+        // Returns 1 / 0
+        public readonly Func<byte, byte> GetMostSignificantBit = (vx) => (byte) (vx >> 7);
 
         private readonly Func<int> randomNum = () => new Random().Next(0, 255);
 

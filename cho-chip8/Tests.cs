@@ -85,21 +85,20 @@ namespace cho_chip8
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        [TestCase((byte)0xF0, 0x0)]
-        [TestCase((byte)0xF9, 0x9)]
-        [TestCase((byte)0x1F, 0xF)]
-        [TestCase((byte)0x0B, 0xB)]
-        public void givenOpcode_WhenGetLSB_AssertCorrectValue(byte opcode, byte expected)
+        [TestCase((byte)0xF0, 0)]
+        [TestCase((byte)0xF9, 1)]
+        [TestCase((byte)0x1F, 1)]
+        [TestCase((byte)0x0B, 1)]
+        public void givenOpcode_WhenGetLSB_AssertCorrectValue(byte opcode, int expected)
         {
             var result = chip8.GetLeastSignificantBit(opcode);
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        [TestCase((byte)0xF0, 0xF)]
-        [TestCase((byte)0xF0, 0xF)]
-        [TestCase((byte)0x01, 0x0)]
-        [TestCase((byte)0xB0, 0xB)]
-        public void givenOpcode_WhenGetMSB_AssertCorrectValue(byte opcode, byte expected)
+        [TestCase((byte)0xF0, 1)]
+        [TestCase((byte)0xF9, 1)]
+        [TestCase((byte)0xDB, 1)]
+        public void givenOpcode_WhenGetMSB_AssertCorrectValue(byte opcode, int expected)
         {
             var result = chip8.GetMostSignificantBit(opcode);
             Assert.That(result, Is.EqualTo(expected));
